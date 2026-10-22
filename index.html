@@ -20,6 +20,7 @@ textarea{width:100%;height:260px;font-size:16px;background:#0b0d10;color:#fff;bo
 .rir{display:flex;gap:6px;align-items:center;width:100%}.rir b{font-size:15px;color:#9ab;font-weight:400;width:54px}
 .rir button{min-height:48px;min-width:48px;padding:6px;font-size:20px;background:#2a3038}.rir button.on{background:#fc6;color:#000}
 .plates{width:100%;font-size:17px;color:#7fd}.plates b{color:#9ab;font-weight:400}.done-btn{width:100%}
+#reload{float:right;margin-top:12px;min-height:40px;padding:6px 12px;font-size:15px}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
 </style></head><body>
 <!-- PLAN: page loads plan.json by default (or ?plan=other.json). This embedded block is only a fallback if the fetch fails. -->
@@ -57,15 +58,19 @@ const nSets=e=>Array.isArray(e.repsBySet)&&e.repsBySet.length?e.repsBySet.length
 function tgtText(e){const n=nSets(e),u=isSec(e)?' sec':'';if(Array.isArray(e.repsBySet)&&e.repsBySet.length&&!e.repsBySet.every(r=>r===e.repsBySet[0]))return `${fmtW(e.weight)} x ${e.repsBySet.join('/')}${u}`;return `${fmtW(e.weight)} x ${n} x ${tgtR(e,0)}${u}`;}
 async function load(){
   const q=new URLSearchParams(location.search).get('plan');
-  try{const r=await fetch(q||'plan.json',{cache:'no-store'});if(!r.ok)throw 0;plan=await r.json();}catch(e){plan=JSON.parse($('plan').textContent);}
+  try{const u=(q||'plan.json');const r=await fetch(u+(u.includes('?')?'&':'?')+'v='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;plan=await r.json();}catch(e){plan=JSON.parse($('plan').textContent);}
   key='wl:'+plan.title+':'+(plan.date||'');
   S=JSON.parse(localStorage.getItem(key)||'null')||{log:plan.exercises.map(()=>[]),finished:false};
+  while(S.log.length<plan.exercises.length)S.log.push([]);
   if(S.tEnd&&S.tEnd>Date.now()){tEnd=S.tEnd;runT();}
   render();
 }
+const anyLogged=()=>S&&S.log.some(L=>L.length);
+async function reloadPlan(){if(anyLogged()&&!S.finished&&!confirm('A workout is in progress. Load latest plan? (logged sets are kept)'))return;await load();}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&plan&&!anyLogged()&&!S.finished)load();});
 function save(){S.tEnd=tEnd;localStorage.setItem(key,JSON.stringify(S));}
 function render(){
-  let h=`<h1>${plan.title}</h1><div class="sub">${plan.date||''} ${plan.notes?'· '+plan.notes:''}</div>`;
+  let h=`<button id="reload" class="sec" onclick="reloadPlan()">↻ Load latest workout</button><h1>${plan.title}</h1><div class="sub">${plan.date||''} ${plan.notes?'· '+plan.notes:''}</div>`;
   if(S.finished){h+=`<h2>Log</h2><textarea id="out" readonly>${logText()}</textarea><div class="row"><button class="ok" onclick="copyLog()">Copy log</button><button class="sec" onclick="S.finished=false;save();render()">Back</button><button class="sec" onclick="resetAll()">Reset</button></div>`;$('app').innerHTML=h;return;}
   plan.exercises.forEach((e,i)=>{
     const L=S.log[i], done=L.length>=nSets(e), u=isSec(e)?' sec':'';

@@ -18,4 +18,7 @@ Single page `index.html`. It loads `plan.json` (same folder) by default; `index.
 ```
 Target display: `155 x 12/11/10` (repsBySet) or `175 x 1 x 8`; seconds add ` sec`.
 Log output (Copy log): `Squat: 160 x 2 x 10`; same weight, varied reps: `RDL: 155 x 12/11/9 (target 12/11/10)`;
-varied weight: `45 x 1 x 10, 50 x 1 x 8`. `(target …)` appears only when a set fell short; `(planned N sets)` if sets were missing; unlogged = `skipped`.
+varied weight: `160x10-2/165x9-1`.
+RIR (reps in reserve, optional 0–5 tap buttons per set) is logged as `reps-RIR`, e.g. `RDL: 155 x 12-2/11-2/9-1 (target 12/11/10)`; omitted when not tapped.
+Weight and reps are editable per set before tapping Done set; the log shows the actual load.
+Session notes box (end of page) is appended as a final line `Notes: …`. `(target …)` appears only when a set fell short; `(planned N sets)` if sets were missing; unlogged = `skipped`.

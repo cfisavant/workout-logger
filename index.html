@@ -16,6 +16,9 @@ button.sec{background:#2a3038}button.ok{background:#1f9d55}
 #flash{position:fixed;inset:0;background:#fff;display:none;z-index:9;align-items:center;justify-content:center;font-size:60px;font-weight:800;color:#000}
 #flash.on{display:flex;animation:f .4s steps(2) infinite}@keyframes f{50%{background:#e11;color:#fff}}
 textarea{width:100%;height:260px;font-size:16px;background:#0b0d10;color:#fff;border:1px solid #345;border-radius:10px;padding:10px}
+
+.rir{display:flex;gap:6px;align-items:center;width:100%}.rir b{font-size:15px;color:#9ab;font-weight:400;width:54px}
+.rir button{min-height:48px;min-width:48px;padding:6px;font-size:20px;background:#2a3038}.rir button.on{background:#fc6;color:#000}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
 </style></head><body>
 <!-- PLAN: page loads plan.json by default (or ?plan=other.json). This embedded block is only a fallback if the fetch fails. -->
@@ -38,7 +41,7 @@ textarea{width:100%;height:260px;font-size:16px;background:#0b0d10;color:#fff;bo
 <div id="timer"><button class="sec" onclick="adj(-15)">−15</button><div id="tv">0:00</div><button class="sec" onclick="adj(15)">+15</button><button class="sec" onclick="stopT()">Skip</button></div>
 <div id="flash" onclick="clearFlash()">REST OVER<br>tap</div>
 <script>
-let plan, S, key, tEnd=0, tInt=null, ac=null, wl=null;
+let rirSel={}; let plan, S, key, tEnd=0, tInt=null, ac=null, wl=null;
 const $=id=>document.getElementById(id);
 const fmtW=w=>w?w:'BW';
 const isSec=e=>e.unit==='sec'||/\(sec\)/i.test(e.name);
@@ -61,11 +64,13 @@ function render(){
     const L=S.log[i], done=L.length>=nSets(e), u=isSec(e)?' sec':'';
     h+=`<div class="ex ${done?'done':''}"><h2>${e.name}</h2><div class="tgt">${tgtText(e)} · rest ${e.rest||90}s</div>`;
     if(e.last)h+=`<div class="last">Last: ${e.last}</div>`;if(e.note)h+=`<div class="note">${e.note}</div>`;
-    L.forEach((s,k)=>h+=`<div class="set logged"><span class="lbl">Set ${k+1}</span>${fmtW(s.w)} x ${s.r}${u} ✓ <button class="sec" style="min-height:40px;padding:6px 10px;font-size:15px" onclick="undo(${i},${k})">undo</button></div>`);
+    L.forEach((s,k)=>h+=`<div class="set logged"><span class="lbl">Set ${k+1}</span>${fmtW(s.w)} x ${s.r}${u}${s.rir!=null?' · RIR '+s.rir:''} ✓ <button class="sec" style="min-height:40px;padding:6px 10px;font-size:15px" onclick="undo(${i},${k})">undo</button></div>`);
     if(!done){const p=L.length?L[L.length-1]:{w:e.weight,r:e.reps};
       h+=`<div class="set"><span class="lbl">Set ${L.length+1}</span><input id="w${i}" type="number" inputmode="decimal" value="${p.w}" aria-label="weight">
-      <input id="r${i}" type="number" inputmode="numeric" value="${tgtR(e,L.length)}" aria-label="${u?'seconds':'reps'}"><span class="lbl">${u?'sec':'reps'}</span><button class="ok" onclick="doneSet(${i})">Done set</button></div>`;}
+      <input id="r${i}" type="number" inputmode="numeric" value="${tgtR(e,L.length)}" aria-label="${u?'seconds':'reps'}"><span class="lbl">${u?'sec':'reps'}</span><button class="ok" onclick="doneSet(${i})">Done set</button>
+      <div class="rir"><b>RIR</b>${[0,1,2,3,4,5].map(n=>`<button class="${rirSel[i]===n?'on':''}" onclick="pickRir(${i},${n})">${n}</button>`).join('')}</div></div>`;}
     h+=`</div>`;});
+  h+=`<div class="ex"><h2>Session notes</h2><textarea id="note" style="height:110px;font-size:20px" placeholder="energy, motivation, pain, swaps…" oninput="S.note=this.value;save()">${(S.note||'').replace(/</g,'&lt;')}</textarea></div>`;
   h+=`<div class="row"><button onclick="finish()">Finish</button><button class="sec" onclick="resetAll()">Reset</button></div>`;
   $('app').innerHTML=h;
 }
@@ -76,7 +81,8 @@ async function wake(){try{if('wakeLock' in navigator&&!wl){wl=await navigator.wa
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){wake();if(tEnd&&Date.now()>=tEnd)tick();}});
 document.addEventListener('touchstart',unlock,{passive:true});document.addEventListener('click',unlock);
 function doneSet(i){const e=plan.exercises[i];const w=parseFloat($('w'+i).value)||0,r=parseInt($('r'+i).value)||0;
-  S.log[i].push({w,r});startT(e.rest||90);save();render();}
+  const s={w,r};if(rirSel[i]!=null)s.rir=rirSel[i];delete rirSel[i];S.log[i].push(s);startT(e.rest||90);save();render();}
+function pickRir(i,n){const w=$('w'+i).value,r=$('r'+i).value;rirSel[i]=rirSel[i]===n?null:n;render();$('w'+i).value=w;$('r'+i).value=r;}
 function undo(i,k){S.log[i].splice(k,1);save();render();}
 function startT(s){tEnd=Date.now()+s*1000;runT();save();}
 function runT(){$('timer').style.display='flex';clearInterval(tInt);tInt=setInterval(tick,250);tick();}
@@ -90,10 +96,12 @@ function alarm(){$('flash').classList.add('on');try{navigator.vibrate&&navigator
 function clearFlash(){$('flash').classList.remove('on');}
 function logText(){let t=`${plan.title} – ${plan.date||new Date().toISOString().slice(0,10)}\n`;
   plan.exercises.forEach((e,i)=>{const L=S.log[i];if(!L.length){t+=`${e.name}: skipped\n`;return;}
-    const u=isSec(e)?' sec':'',sameW=L.every(s=>s.w===L[0].w),same=sameW&&L.every(s=>s.r===L[0].r),n=nSets(e);
+    const u=isSec(e)?' sec':'',sameW=L.every(s=>s.w===L[0].w),anyR=L.some(s=>s.rir!=null),same=sameW&&!anyR&&L.every(s=>s.r===L[0].r),n=nSets(e);
+    const rr=s=>s.r+(s.rir!=null?'-'+s.rir:'');
     const tg=Array.from({length:n},(_,k)=>tgtR(e,k)),miss=L.some((s,k)=>s.r<tg[k]);
-    t+=`${e.name}: `+(same?`${fmtW(L[0].w)} x ${L.length} x ${L[0].r}${u}`:sameW?`${fmtW(L[0].w)} x ${L.map(s=>s.r).join('/')}${u}`:L.map(s=>`${fmtW(s.w)} x 1 x ${s.r}${u}`).join(', '))
+    t+=`${e.name}: `+(same?`${fmtW(L[0].w)} x ${L.length} x ${L[0].r}${u}`:sameW?`${fmtW(L[0].w)} x ${L.map(rr).join('/')}${u}`:L.map(s=>`${fmtW(s.w)}x${rr(s)}`).join('/')+u)
       +(miss?` (target ${tg.length>1?tg.slice(0,L.length).join('/'):tg[0]})`:'')+(L.length<n?` (planned ${n} sets)`:'')+`\n`;});
+  if(S.note&&S.note.trim())t+=`Notes: ${S.note.trim().replace(/\s*\n\s*/g,'; ')}\n`;
   return t.trim();}
 function finish(){stopT();S.finished=true;save();render();}
 async function copyLog(){const t=logText();try{await navigator.clipboard.writeText(t);}catch(e){const a=$('out');a.select();document.execCommand('copy');}alert('Copied – paste to Hans');}

@@ -1,0 +1,10 @@
+{ "title": "Heavy Legs", "date": "2026-10-22", "unit": "lb",
+  "exercises": [
+    {"name":"Back Squat (top set)","weight":175,"sets":1,"reps":8,"rest":180,"last":"160 x 1 x 12","note":"warm-up 95/135/155 x 8; leave 1-2 reps"},
+    {"name":"Back Squat (back-off)","weight":160,"sets":2,"reps":10,"rest":150,"last":"145 x 2 x 10"},
+    {"name":"RDL","weight":155,"sets":3,"reps":12,"rest":120,"last":"145: 14/12/10","note":"targets 12/11/10","repsBySet":[12,11,10]},
+    {"name":"Cable Leg Curl","weight":25,"sets":2,"reps":10,"rest":75,"last":"25: 9/7","note":"targets 10/8, right leg first","repsBySet":[10,8]},
+    {"name":"BW Split Squat","weight":0,"sets":2,"reps":21,"rest":75,"last":"20/17","note":"targets 21/18","repsBySet":[21,18]},
+    {"name":"Calf Raise","weight":25,"sets":3,"reps":12,"rest":60,"last":"25: 11/10/10","note":"targets 12/11/11","repsBySet":[12,11,11]},
+    {"name":"Farmer Carry (sec)","weight":70,"sets":1,"reps":50,"rest":60,"last":"70 x 45 sec"}
+  ] }

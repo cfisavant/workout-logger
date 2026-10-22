@@ -19,6 +19,7 @@ textarea{width:100%;height:260px;font-size:16px;background:#0b0d10;color:#fff;bo
 
 .rir{display:flex;gap:6px;align-items:center;width:100%}.rir b{font-size:15px;color:#9ab;font-weight:400;width:54px}
 .rir button{min-height:48px;min-width:48px;padding:6px;font-size:20px;background:#2a3038}.rir button.on{background:#fc6;color:#000}
+.plates{width:100%;font-size:17px;color:#7fd}.plates b{color:#9ab;font-weight:400}.done-btn{width:100%}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
 </style></head><body>
 <!-- PLAN: page loads plan.json by default (or ?plan=other.json). This embedded block is only a fallback if the fetch fails. -->
@@ -44,6 +45,12 @@ textarea{width:100%;height:260px;font-size:16px;background:#0b0d10;color:#fff;bo
 let rirSel={}; let plan, S, key, tEnd=0, tInt=null, ac=null, wl=null;
 const $=id=>document.getElementById(id);
 const fmtW=w=>w?w:'BW';
+const PL=[45,35,25,10,5,2.5,1.25];
+const isBar=e=>e.barbell===true||(e.barbell!==false&&/squat|bench|deadlift|\brdl\b|barbell|\bohp\b|good ?morning|hip thrust/i.test(e.name)&&!/dumbbell|\bdb\b|cable|machine|smith|split squat|bulgarian|goblet|\bbw\b|bodyweight|kettlebell|\bkb\b/i.test(e.name));
+function plates(w){let r=Math.round(((w-45)/2)*100)/100;const o=[];for(const p of PL)while(r>=p-1e-9){o.push(p);r=Math.round((r-p)*100)/100;}return {o,rem:r};}
+function plateText(w){w=parseFloat(w);if(!(w>0))return '<b>Plates/side:</b> —';if(w<45)return '<b>Plates/side:</b> below 45 lb bar';if(w===45)return '<b>Plates/side:</b> empty bar';
+  const {o,rem}=plates(w);const t=o.join(', ');if(rem>0){const got=45+2*o.reduce((a,b)=>a+b,0);return `<b>Plates/side:</b> ${t||'empty bar'} <span class="note">(= ${got}; ${w} not exact)</span>`;}return `<b>Plates/side:</b> ${t}`;}
+function updPl(i){const d=$('p'+i);if(d)d.innerHTML=plateText($('w'+i).value);}
 const isSec=e=>e.unit==='sec'||/\(sec\)/i.test(e.name);
 const tgtR=(e,k)=>Array.isArray(e.repsBySet)&&e.repsBySet.length?(e.repsBySet[k]??e.repsBySet[e.repsBySet.length-1]):e.reps;
 const nSets=e=>Array.isArray(e.repsBySet)&&e.repsBySet.length?e.repsBySet.length:e.sets;
@@ -66,9 +73,11 @@ function render(){
     if(e.last)h+=`<div class="last">Last: ${e.last}</div>`;if(e.note)h+=`<div class="note">${e.note}</div>`;
     L.forEach((s,k)=>h+=`<div class="set logged"><span class="lbl">Set ${k+1}</span>${fmtW(s.w)} x ${s.r}${u}${s.rir!=null?' · RIR '+s.rir:''} ✓ <button class="sec" style="min-height:40px;padding:6px 10px;font-size:15px" onclick="undo(${i},${k})">undo</button></div>`);
     if(!done){const p=L.length?L[L.length-1]:{w:e.weight,r:e.reps};
-      h+=`<div class="set"><span class="lbl">Set ${L.length+1}</span><input id="w${i}" type="number" inputmode="decimal" value="${p.w}" aria-label="weight">
-      <input id="r${i}" type="number" inputmode="numeric" value="${tgtR(e,L.length)}" aria-label="${u?'seconds':'reps'}"><span class="lbl">${u?'sec':'reps'}</span><button class="ok" onclick="doneSet(${i})">Done set</button>
-      <div class="rir"><b>RIR</b>${[0,1,2,3,4,5].map(n=>`<button class="${rirSel[i]===n?'on':''}" onclick="pickRir(${i},${n})">${n}</button>`).join('')}</div></div>`;}
+      h+=`<div class="set"><span class="lbl">Set ${L.length+1}</span><input id="w${i}" type="number" inputmode="decimal" value="${p.w}" aria-label="weight" oninput="updPl(${i})">
+      <input id="r${i}" type="number" inputmode="numeric" value="${tgtR(e,L.length)}" aria-label="${u?'seconds':'reps'}"><span class="lbl">${u?'sec':'reps'}</span>
+      ${isBar(e)?`<div class="plates" id="p${i}">${plateText(p.w)}</div>`:''}
+      <div class="rir"><b>RIR</b>${[0,1,2,3,4,5].map(n=>`<button class="${rirSel[i]===n?'on':''}" onclick="pickRir(${i},${n})">${n}</button>`).join('')}</div>
+      <button class="ok done-btn" onclick="doneSet(${i})">Set Complete</button></div>`;}
     h+=`</div>`;});
   h+=`<div class="ex"><h2>Session notes</h2><textarea id="note" style="height:110px;font-size:20px" placeholder="energy, motivation, pain, swaps…" oninput="S.note=this.value;save()">${(S.note||'').replace(/</g,'&lt;')}</textarea></div>`;
   h+=`<div class="row"><button onclick="finish()">Finish</button><button class="sec" onclick="resetAll()">Reset</button></div>`;
@@ -81,9 +90,11 @@ async function wake(){try{if('wakeLock' in navigator&&!wl){wl=await navigator.wa
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){wake();if(tEnd&&Date.now()>=tEnd)tick();}});
 document.addEventListener('touchstart',unlock,{passive:true});document.addEventListener('click',unlock);
 function doneSet(i){const e=plan.exercises[i];const w=parseFloat($('w'+i).value)||0,r=parseInt($('r'+i).value)||0;
-  const s={w,r};if(rirSel[i]!=null)s.rir=rirSel[i];delete rirSel[i];S.log[i].push(s);startT(e.rest||90);save();render();}
-function pickRir(i,n){const w=$('w'+i).value,r=$('r'+i).value;rirSel[i]=rirSel[i]===n?null:n;render();$('w'+i).value=w;$('r'+i).value=r;}
-function undo(i,k){S.log[i].splice(k,1);save();render();}
+  const s={w,r};if(rirSel[i]!=null)s.rir=rirSel[i];delete rirSel[i];S.log[i].push(s);startT(e.rest||90);save();render();
+  if(S.log[i].length>=nSets(e)){const c=[...document.querySelectorAll('.ex')];let j=plan.exercises.findIndex((x,k)=>k>i&&S.log[k].length<nSets(x));if(j<0)j=plan.exercises.findIndex(x=>S.log[plan.exercises.indexOf(x)].length<nSets(x));
+    const tgt=j>=0?c[j]:c[plan.exercises.length];if(tgt)tgt.scrollIntoView({behavior:'smooth',block:'center'});}}
+function pickRir(i,n){const w=$('w'+i).value,r=$('r'+i).value;rirSel[i]=rirSel[i]===n?null:n;const y=scrollY;render();$('w'+i).value=w;$('r'+i).value=r;updPl(i);scrollTo(0,y);}
+function undo(i,k){S.log[i].splice(k,1);save();render();const c=document.querySelectorAll('.ex')[i];if(c)c.scrollIntoView({behavior:'smooth',block:'center'});}
 function startT(s){tEnd=Date.now()+s*1000;runT();save();}
 function runT(){$('timer').style.display='flex';clearInterval(tInt);tInt=setInterval(tick,250);tick();}
 function tick(){const ms=tEnd-Date.now();if(ms<=0){stopT();alarm();return;}const s=Math.ceil(ms/1000);$('tv').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}

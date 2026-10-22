@@ -20,5 +20,9 @@ Target display: `155 x 12/11/10` (repsBySet) or `175 x 1 x 8`; seconds add ` sec
 Log output (Copy log): `Squat: 160 x 2 x 10`; same weight, varied reps: `RDL: 155 x 12/11/9 (target 12/11/10)`;
 varied weight: `160x10-2/165x9-1`.
 RIR (reps in reserve, optional 0–5 tap buttons per set) is logged as `reps-RIR`, e.g. `RDL: 155 x 12-2/11-2/9-1 (target 12/11/10)`; omitted when not tapped.
-Weight and reps are editable per set before tapping Done set; the log shows the actual load.
+Weight and reps are editable per set before tapping Set Complete; the log shows the actual load.
 Session notes box (end of page) is appended as a final line `Notes: …`. `(target …)` appears only when a set fell short; `(planned N sets)` if sets were missing; unlogged = `skipped`.
+
+Plate calculator: barbell lifts show plates **per side** under the weight (45 lb bar; plates 45/35/25/10/5/2.5/1.25), updating live as the weight is edited.
+Optional exercise field `"barbell": true` forces the calculator on (`"barbell": false` forces it off). Without the field, names containing squat/bench/deadlift/RDL/barbell/OHP/good morning/hip thrust are treated as barbell, except dumbbell/DB/cable/machine/Smith/split squat/goblet/BW/kettlebell.
+When the last set of an exercise is completed, the page scrolls the next unfinished exercise to the middle of the screen; undo scrolls back to that exercise.

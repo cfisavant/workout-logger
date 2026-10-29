@@ -1,13 +1,12 @@
-{ "title": "Heavy Legs + Abs", "date": "2026-10-29", "unit": "lb",
-  "notes": "Squat warm-up 95/135/155/175 x 5. Abs first (harder lower-ab work, then crunch), or at the end if you prefer.",
+{ "title": "Moderate Pull", "date": "2026-10-30", "unit": "lb",
+  "notes": "Last set of each main lift: leave 1-2 reps. No grinding pull-ups.",
   "exercises": [
-    {"name":"Hanging Knee Raise","weight":0,"sets":2,"repsBySet":[13,10],"rest":75,"last":"12","barbell":false},
-    {"name":"Kneeling Cable Crunch","weight":60,"sets":3,"repsBySet":[15,13,10],"rest":75,"last":"60: 15/12/8","barbell":false},
-    {"name":"Back Squat (top set)","weight":185,"sets":1,"reps":8,"rest":180,"last":"175 x 10","note":"leave 1-2 reps","barbell":true},
-    {"name":"Back Squat (back-off)","weight":165,"sets":2,"repsBySet":[10,10],"rest":150,"last":"160: 10/10","barbell":true},
-    {"name":"RDL","weight":155,"sets":3,"repsBySet":[13,12,11],"rest":120,"last":"155: 12/11/10","barbell":true},
-    {"name":"Cable Leg Curl","weight":25,"sets":2,"repsBySet":[10,9],"rest":75,"last":"25: 10/8","note":"right leg first","barbell":false},
-    {"name":"DB Split Squat","weight":5,"sets":2,"repsBySet":[20,20],"rest":75,"last":"2.5: 20/20","barbell":false},
-    {"name":"Calf Raise","weight":25,"sets":3,"repsBySet":[12,12,11],"rest":60,"last":"25: 12/11/10","barbell":false},
-    {"name":"Farmer Carry (sec)","weight":70,"sets":1,"reps":55,"rest":60,"last":"70 x 50 sec","barbell":false}
+    {"name":"Pull-up","weight":0,"sets":3,"repsBySet":[7,7,7],"rest":120,"last":"6/6/7","barbell":false},
+    {"name":"One-arm DB Row (per side)","weight":50,"sets":4,"repsBySet":[16,14,14,14],"rest":90,"last":"50s: 15/13/13/13","barbell":false},
+    {"name":"Cable Straight-arm Pulldown","weight":35,"sets":2,"repsBySet":[16,14],"rest":75,"last":"35: 16/13","barbell":false},
+    {"name":"Cable Face Pull","weight":25,"sets":2,"repsBySet":[15,15],"rest":75,"last":"25: 15/14","note":"elbows high, 1-sec pause","barbell":false},
+    {"name":"Hammer Curl","weight":30,"sets":2,"repsBySet":[15,13],"rest":75,"last":"30s: 15/12","barbell":false},
+    {"name":"Floor T Lift","weight":0,"sets":2,"repsBySet":[12,15],"rest":45,"last":"11/15","barbell":false},
+    {"name":"Floor L Lift","weight":0,"sets":2,"repsBySet":[13,13],"rest":45,"last":"12/12","barbell":false},
+    {"name":"Band Pull-apart","weight":0,"sets":2,"repsBySet":[22,18],"rest":45,"last":"22/17","barbell":false}
   ] }

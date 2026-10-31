@@ -1,12 +1,13 @@
-{ "title": "Moderate Pull", "date": "2026-10-30", "unit": "lb",
-  "notes": "Last set of each main lift: leave 1-2 reps. No grinding pull-ups.",
+{ "title": "Push + Abs", "date": "2026-10-31", "unit": "lb",
+  "notes": "Extra carbs today: full volume, no skipping. Pull first in each pair. Pad the bench for seated work.",
   "exercises": [
-    {"name":"Pull-up","weight":0,"sets":3,"repsBySet":[7,7,7],"rest":120,"last":"6/6/7","barbell":false},
-    {"name":"One-arm DB Row (per side)","weight":50,"sets":4,"repsBySet":[16,14,14,14],"rest":90,"last":"50s: 15/13/13/13","barbell":false},
-    {"name":"Cable Straight-arm Pulldown","weight":35,"sets":2,"repsBySet":[16,14],"rest":75,"last":"35: 16/13","barbell":false},
-    {"name":"Cable Face Pull","weight":25,"sets":2,"repsBySet":[15,15],"rest":75,"last":"25: 15/14","note":"elbows high, 1-sec pause","barbell":false},
-    {"name":"Hammer Curl","weight":30,"sets":2,"repsBySet":[15,13],"rest":75,"last":"30s: 15/12","barbell":false},
-    {"name":"Floor T Lift","weight":0,"sets":2,"repsBySet":[12,15],"rest":45,"last":"11/15","barbell":false},
-    {"name":"Floor L Lift","weight":0,"sets":2,"repsBySet":[13,13],"rest":45,"last":"12/12","barbell":false},
-    {"name":"Band Pull-apart","weight":0,"sets":2,"repsBySet":[22,18],"rest":45,"last":"22/17","barbell":false}
+    {"name":"Pull-up","weight":0,"sets":3,"repsBySet":[8,7,7],"rest":75,"last":"7/7/7","note":"pair with DB press; no grinding","barbell":false},
+    {"name":"DB Press","weight":60,"sets":4,"repsBySet":[12,11,10,10],"rest":120,"last":"60s: 12/10/10/9","note":"neutral grip, soft lockout","barbell":false},
+    {"name":"Chest-supported Row","weight":45,"sets":3,"repsBySet":[10,10,10],"rest":75,"last":"40s: 13/15/12","note":"1-sec squeeze; pair with OH press","barbell":false},
+    {"name":"Seated OH Press","weight":35,"sets":3,"repsBySet":[12,12,10],"rest":120,"last":"35s: 12/11/9","note":"no rest-pause","barbell":false},
+    {"name":"DB Fly","weight":35,"sets":3,"repsBySet":[12,10,9],"rest":90,"last":"skipped (40s: 10/8/6)","barbell":false},
+    {"name":"Cable Pushdown","weight":35,"sets":3,"repsBySet":[13,11,9],"rest":90,"last":"35: 13/7","note":"no rest-pause","barbell":false},
+    {"name":"Lateral Raise","weight":10,"sets":2,"repsBySet":[25,23],"rest":75,"last":"10s: 25/22","barbell":false},
+    {"name":"Hanging Knee Raise","weight":0,"sets":2,"repsBySet":[12,9],"rest":75,"last":"11/8","barbell":false},
+    {"name":"Kneeling Cable Crunch","weight":60,"sets":3,"repsBySet":[16,14,11],"rest":90,"last":"60: 15/13/10","barbell":false}
   ] }

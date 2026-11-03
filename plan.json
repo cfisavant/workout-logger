@@ -1,16 +1,17 @@
 {
- "title": "Moderate Pull",
- "date": "2026-11-02",
+ "title": "Hotel Legs + Abs",
+ "date": "2026-11-03",
  "unit": "lb",
- "notes": "Swapped ahead of legs (legs tomorrow). Brace hard on rows; knee on bench if lower back complains.",
+ "notes": "Busy gym: squat then RDL first, then whatever is free; carry and abs last. Log Smith weight as shown.",
  "exercises": [
-  {"name": "Pull-ups", "weight": 0, "sets": 3, "repsBySet": [8, 8, 7], "rest": 120, "last": "8/7/7", "note": "no grinding", "barbell": false},
-  {"name": "One-Arm DB Row", "weight": 50, "sets": 4, "repsBySet": [16, 14, 13, 12], "rest": 90, "last": "50s: 16/13/12/11", "note": "per arm", "barbell": false},
-  {"name": "Straight-Arm Pulldown", "weight": 35, "sets": 2, "repsBySet": [16, 11], "rest": 75, "last": "35: 16/10", "barbell": false},
-  {"name": "Face Pull", "weight": 25, "sets": 2, "repsBySet": [15, 14], "rest": 75, "last": "25: 14/13", "barbell": false},
-  {"name": "Hammer Curl", "weight": 30, "sets": 2, "repsBySet": [15, 11], "rest": 75, "last": "30s: 15/10", "barbell": false},
-  {"name": "T Lift", "weight": 0, "sets": 2, "repsBySet": [16, 16], "rest": 60, "last": "15/15", "barbell": false},
-  {"name": "L Lift", "weight": 0, "sets": 2, "repsBySet": [13, 13], "rest": 60, "last": "skipped (12/12)", "barbell": false},
-  {"name": "Band Pull-Apart", "weight": 0, "sets": 2, "repsBySet": [24, 21], "rest": 60, "last": "23/20", "barbell": false}
+  {"name": "Smith Squat", "weight": 155, "sets": 3, "repsBySet": [10, 10, 8], "rest": 120, "last": "new baseline (home squat 185x8)", "note": "feet slightly forward, RIR2", "barbell": false},
+  {"name": "DB RDL", "weight": 60, "sets": 3, "repsBySet": [12, 11, 10], "rest": 90, "last": "home BB RDL 155: 13/10", "barbell": false},
+  {"name": "DB Split Squat", "weight": 5, "sets": 2, "repsBySet": [20, 20], "rest": 75, "last": "5s: 20/16", "barbell": false},
+  {"name": "TRX Hamstring Curl", "weight": 0, "sets": 2, "repsBySet": [12, 10], "rest": 60, "last": "new", "barbell": false},
+  {"name": "Leg Extension", "weight": 70, "sets": 2, "repsBySet": [15, 12], "rest": 60, "last": "new", "note": "finisher if free", "barbell": false},
+  {"name": "Single-Leg Calf Raise", "weight": 25, "sets": 3, "repsBySet": [12, 12, 11], "rest": 60, "last": "skipped", "barbell": false},
+  {"name": "Farmer Carry (sec)", "weight": 70, "sets": 1, "reps": 55, "rest": 90, "last": "70s: 50 sec", "barbell": false},
+  {"name": "Cable Crunch", "weight": 60, "sets": 3, "repsBySet": [16, 14, 11], "rest": 60, "last": "60: 15/13/10", "barbell": false},
+  {"name": "TRX Knee Tuck", "weight": 0, "sets": 2, "repsBySet": [12, 10], "rest": 60, "last": "new (hanging knee raise 13/9)", "barbell": false}
  ]
 }

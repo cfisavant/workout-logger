@@ -1,120 +1,22 @@
 {
- "title": "Hotel Legs + Abs",
- "date": "2026-11-03",
+ "title": "Intro Legs",
+ "date": "2026-11-07",
  "unit": "lb",
- "notes": "Busy gym: squat then RDL first, then whatever is free; carry and abs last. Log Smith weight as shown.",
+ "notes": "Beginner day. Form first. Every set should end with about 3 reps left in the tank; nothing should hurt. If a weight feels heavy, drop it and log what was used.",
  "exercises": [
-  {
-   "name": "Smith Squat",
-   "weight": 155,
-   "sets": 3,
-   "repsBySet": [
-    10,
-    10,
-    8
-   ],
-   "rest": 120,
-   "last": "new baseline (home squat 185x8)",
-   "note": "feet slightly forward, RIR2",
-   "barbell": false
-  },
-  {
-   "name": "DB RDL",
-   "weight": 60,
-   "sets": 3,
-   "repsBySet": [
-    12,
-    11,
-    10
-   ],
-   "rest": 90,
-   "last": "home BB RDL 155: 13/10",
-   "barbell": false
-  },
-  {
-   "name": "DB Split Squat",
-   "weight": 5,
-   "sets": 2,
-   "repsBySet": [
-    20,
-    20
-   ],
-   "rest": 75,
-   "last": "5s: 20/16",
-   "barbell": false
-  },
-  {
-   "name": "Lying Leg Curl",
-   "weight": 40,
-   "sets": 2,
-   "repsBySet": [
-    12,
-    10
-   ],
-   "rest": 60,
-   "last": "home cable curl 25: 10/9 target",
-   "barbell": false,
-   "note": "slow lowering; adjust if machine feels off"
-  },
-  {
-   "name": "Leg Extension",
-   "weight": 70,
-   "sets": 2,
-   "repsBySet": [
-    15,
-    12
-   ],
-   "rest": 60,
-   "last": "new",
-   "note": "finisher if free",
-   "barbell": false
-  },
-  {
-   "name": "Single-Leg Calf Raise",
-   "weight": 25,
-   "sets": 3,
-   "repsBySet": [
-    12,
-    12,
-    11
-   ],
-   "rest": 60,
-   "last": "skipped",
-   "barbell": false
-  },
-  {
-   "name": "Farmer Carry (sec)",
-   "weight": 70,
-   "sets": 1,
-   "reps": 55,
-   "rest": 90,
-   "last": "70s: 50 sec",
-   "barbell": false
-  },
-  {
-   "name": "Cable Crunch",
-   "weight": 60,
-   "sets": 3,
-   "repsBySet": [
-    16,
-    14,
-    11
-   ],
-   "rest": 60,
-   "last": "60: 15/13/10",
-   "barbell": false
-  },
-  {
-   "name": "TRX Knee Tuck",
-   "weight": 0,
-   "sets": 2,
-   "repsBySet": [
-    12,
-    10
-   ],
-   "rest": 60,
-   "last": "new (hanging knee raise 13/9)",
-   "barbell": false
-  }
+  {"name": "Box Squat to Bench (BW)", "weight": 0, "sets": 2, "reps": 10, "rest": 60, "barbell": false,
+   "note": "sit back to the bench, tap, stand up; chest up, knees track over toes"},
+  {"name": "Goblet Squat", "weight": 10, "sets": 2, "reps": 10, "rest": 75, "barbell": false,
+   "note": "hold one DB at the chest, elbows inside knees, sit between the heels"},
+  {"name": "DB RDL", "weight": 10, "sets": 2, "reps": 10, "rest": 75, "barbell": false,
+   "note": "10 lb in each hand; soft knees, push hips back, flat back, DBs slide down the thighs"},
+  {"name": "Glute Bridge (BW)", "weight": 0, "sets": 2, "reps": 12, "rest": 60, "barbell": false,
+   "note": "on a mat; squeeze glutes at the top for 1 second"},
+  {"name": "Reverse Lunge (BW, each leg)", "weight": 0, "sets": 2, "reps": 8, "rest": 60, "barbell": false,
+   "note": "step back, back knee gently toward the floor; hold a rail for balance if needed"},
+  {"name": "Calf Raise (BW)", "weight": 0, "sets": 2, "reps": 15, "rest": 45, "barbell": false,
+   "note": "slow up, slow down, full range"},
+  {"name": "Plank (sec)", "weight": 0, "sets": 2, "reps": 20, "rest": 45, "barbell": false,
+   "note": "straight line head to heels, squeeze glutes"}
  ]
 }

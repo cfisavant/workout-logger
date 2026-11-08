@@ -1,22 +1,14 @@
 {
- "title": "Intro Legs",
- "date": "2026-11-07",
+ "title": "Push + Pull",
+ "date": "2026-11-08",
  "unit": "lb",
- "notes": "Beginner day. Form first. Every set should end with about 3 reps left in the tank; nothing should hurt. If a weight feels heavy, drop it and log what was used.",
+ "notes": "Post-ruck combo: alternate pull and push. Main lifts finish RIR1-2; no grinding pull-ups.",
  "exercises": [
-  {"name": "Box Squat to Bench (BW)", "weight": 0, "sets": 2, "reps": 10, "rest": 60, "barbell": false,
-   "note": "sit back to the bench, tap, stand up; chest up, knees track over toes"},
-  {"name": "Goblet Squat", "weight": 10, "sets": 2, "reps": 10, "rest": 75, "barbell": false,
-   "note": "hold one DB at the chest, elbows inside knees, sit between the heels"},
-  {"name": "DB RDL", "weight": 10, "sets": 2, "reps": 10, "rest": 75, "barbell": false,
-   "note": "10 lb in each hand; soft knees, push hips back, flat back, DBs slide down the thighs"},
-  {"name": "Glute Bridge (BW)", "weight": 0, "sets": 2, "reps": 12, "rest": 60, "barbell": false,
-   "note": "on a mat; squeeze glutes at the top for 1 second"},
-  {"name": "Reverse Lunge (BW, each leg)", "weight": 0, "sets": 2, "reps": 8, "rest": 60, "barbell": false,
-   "note": "step back, back knee gently toward the floor; hold a rail for balance if needed"},
-  {"name": "Calf Raise (BW)", "weight": 0, "sets": 2, "reps": 15, "rest": 45, "barbell": false,
-   "note": "slow up, slow down, full range"},
-  {"name": "Plank (sec)", "weight": 0, "sets": 2, "reps": 20, "rest": 45, "barbell": false,
-   "note": "straight line head to heels, squeeze glutes"}
+  {"name": "Pull-ups", "weight": 0, "sets": 3, "repsBySet": [9, 8, 8], "rest": 120, "last": "8/8/8", "barbell": false},
+  {"name": "DB Bench Press", "weight": 60, "sets": 3, "repsBySet": [12, 11, 10], "rest": 120, "last": "60s: 12/11/9/9", "note": "neutral grip, 3 sets today", "barbell": false},
+  {"name": "One-Arm DB Row", "weight": 50, "sets": 3, "repsBySet": [16, 14, 13], "rest": 90, "last": "50s: 16/13/8/13", "barbell": false},
+  {"name": "DB Overhead Press", "weight": 35, "sets": 3, "repsBySet": [12, 12, 11], "rest": 90, "last": "35s: 12/12/10", "note": "padded seat, neutral grip", "barbell": false},
+  {"name": "Face Pull", "weight": 25, "sets": 2, "repsBySet": [16, 15], "rest": 60, "last": "25: 16/14", "barbell": false},
+  {"name": "Triceps Pushdown", "weight": 35, "sets": 2, "repsBySet": [13, 12], "rest": 60, "last": "35: 13/11", "barbell": false}
  ]
 }

@@ -2,7 +2,7 @@
  "title": "Push + Pull",
  "date": "2026-11-13",
  "unit": "lb",
- "notes": "Alternate pull and push. Main lifts finish RIR1-2; no grinding pull-ups.",
+ "notes": "Alternate pull and push. Main lifts finish RIR1-2.",
  "exercises": [
   {"name": "Pull-ups", "weight": 0, "sets": 3, "repsBySet": [10, 9, 8], "rest": 120, "last": "9/9/8", "barbell": false},
   {"name": "DB Bench Press", "weight": 60, "sets": 3, "repsBySet": [12, 11, 10], "rest": 120, "last": "60s: 11/11/10", "note": "neutral grip", "barbell": false},

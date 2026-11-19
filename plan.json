@@ -1,15 +1,14 @@
 {
- "title": "Push + Pull",
- "date": "2026-11-13",
+ "title": "Comeback Legs + Abs",
+ "date": "2026-11-19",
  "unit": "lb",
- "notes": "Alternate pull and push. Main lifts finish RIR1-2.",
+ "notes": "First session back after the cold. Every set finishes at RIR 2-3 today, a little lighter than Nov 9 on purpose. Abs first.",
  "exercises": [
-  {"name": "Pull-ups", "weight": 0, "sets": 3, "repsBySet": [10, 9, 8], "rest": 120, "last": "9/9/8", "barbell": false},
-  {"name": "DB Bench Press", "weight": 60, "sets": 3, "repsBySet": [12, 11, 10], "rest": 120, "last": "60s: 11/11/10", "note": "neutral grip", "barbell": false},
-  {"name": "One-Arm DB Row", "weight": 50, "sets": 3, "repsBySet": [16, 15, 14], "rest": 90, "last": "50s: 16/15/13", "barbell": false},
-  {"name": "DB Overhead Press", "weight": 35, "sets": 3, "repsBySet": [13, 12, 11], "rest": 90, "last": "35s: 12/12/11", "note": "padded seat, neutral grip", "barbell": false},
-  {"name": "Face Pull", "weight": 25, "sets": 2, "repsBySet": [16, 15], "rest": 60, "last": "25: 16/14", "barbell": false},
-  {"name": "Triceps Pushdown", "weight": 35, "sets": 2, "repsBySet": [13, 10], "rest": 60, "last": "35: 13/9", "note": "finish within 1-2 reps of failure", "barbell": false},
-  {"name": "Hammer Curl", "weight": 30, "sets": 2, "repsBySet": [15, 11], "rest": 60, "last": "30s: 15/10", "barbell": false}
+  {"name": "Hanging Knee Raise", "weight": 0, "sets": 2, "repsBySet": [12, 9], "rest": 60, "last": "BW: 12/9", "barbell": false},
+  {"name": "Cable Crunch", "weight": 60, "sets": 3, "repsBySet": [14, 10, 8], "rest": 60, "last": "60: 14/10/7", "barbell": false},
+  {"name": "Back Squat", "weight": 180, "sets": 1, "repsBySet": [8], "rest": 180, "last": "190x9 (PR)", "note": "top set, RIR 2-3", "barbell": true},
+  {"name": "Back-off Squat", "weight": 160, "sets": 2, "repsBySet": [10, 10], "rest": 150, "last": "170: 10/9", "barbell": true},
+  {"name": "Romanian Deadlift", "weight": 145, "sets": 3, "repsBySet": [12, 12, 10], "rest": 120, "last": "155: 13/12/8", "barbell": true},
+  {"name": "DB Split Squat", "weight": 7.5, "sets": 2, "repsBySet": [20, 15], "rest": 90, "last": "7.5s: 20/15", "barbell": false}
  ]
 }

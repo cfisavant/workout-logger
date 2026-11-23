@@ -1,14 +1,15 @@
 {
- "title": "Legs + Abs",
- "date": "2026-11-23",
+ "title": "Push + Pull",
+ "date": "2026-11-24",
  "unit": "lb",
- "notes": "Built off your Nov 9 legs, not the post-sick warmup. Abs first. Main lifts finish RIR1-2.",
+ "notes": "Row moved before bench; bench reset to 50s. Pull first in each pair. Main lifts finish RIR1-2.",
  "exercises": [
-  {"name": "Hanging Knee Raise", "weight": 0, "sets": 2, "repsBySet": [13, 10], "rest": 60, "last": "Nov 9: 12/9", "barbell": false},
-  {"name": "Cable Crunch", "weight": 60, "sets": 3, "repsBySet": [15, 11, 8], "rest": 60, "last": "Nov 9: 60 14/10/7", "barbell": false},
-  {"name": "Back Squat", "weight": 190, "sets": 1, "repsBySet": [9], "rest": 180, "last": "Nov 9: 190x9 (PR)", "note": "top set; match the PR on your first week back", "barbell": true},
-  {"name": "Back-off Squat", "weight": 170, "sets": 2, "repsBySet": [10, 10], "rest": 150, "last": "Nov 9: 170 10/9", "barbell": true},
-  {"name": "Romanian Deadlift", "weight": 155, "sets": 3, "repsBySet": [13, 12, 9], "rest": 120, "last": "Nov 9: 155 13/12/8", "barbell": true},
-  {"name": "DB Split Squat", "weight": 7.5, "sets": 2, "repsBySet": [20, 16], "rest": 90, "last": "7.5s: 20/15", "barbell": false}
+  {"name": "Pull-ups", "weight": 0, "sets": 3, "repsBySet": [10, 9, 8], "rest": 90, "last": "10/9/7", "barbell": false},
+  {"name": "DB Overhead Press", "weight": 35, "sets": 3, "repsBySet": [13, 11, 9], "rest": 120, "last": "35s: 13/10/9", "note": "padded seat, neutral grip", "barbell": false},
+  {"name": "One-Arm DB Row", "weight": 50, "sets": 3, "repsBySet": [16, 15, 14], "rest": 90, "last": "50s: 16/14/14", "barbell": false},
+  {"name": "DB Bench Press", "weight": 50, "sets": 3, "repsBySet": [12, 11, 10], "rest": 120, "last": "60s x5, 40s: 10/16", "note": "moved after row; neutral grip; stop if shoulder feels unstable", "barbell": false},
+  {"name": "Face Pull", "weight": 25, "sets": 2, "repsBySet": [16, 13], "rest": 60, "last": "25: 16/12", "barbell": false},
+  {"name": "Triceps Pushdown", "weight": 35, "sets": 2, "repsBySet": [14, 11], "rest": 60, "last": "35: 14/10", "barbell": false},
+  {"name": "Hammer Curl", "weight": 30, "sets": 2, "repsBySet": [14, 9], "rest": 60, "last": "30s: 14/8", "barbell": false}
  ]
 }
